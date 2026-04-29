@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Login - Koperasi Cakrawala</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-card">
+        <h2>Login Koperasi</h2>
+        <input type="text" id="username" placeholder="Masukkan Nama/Username">
+        <select id="role">
+            <option value="nasabah">Nasabah</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button onclick="login()">Masuk</button>
+    </div>
+    <script>
+        function login() {
+            const user = document.getElementById('username').value;
+            const role = document.getElementById('role').value;
+            if(!user) return alert("Isi nama dulu!");
+            
+            // Simpan data login ke storage sementara
+            localStorage.setItem('currentUser', user);
+            localStorage.setItem('currentRole', role);
+
+            // Arahkan sesuai role [cite: 36]
+            if(role === 'admin') window.location.href = 'admin.html';
+            else window.location.href = 'nasabah.html';
+        }
+    </script>
+</body>
+</html>
